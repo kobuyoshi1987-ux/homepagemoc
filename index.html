@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPO法人秋田スポーツPLUS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-SzlrxWriC3z8p8fY5Wb5QZ2a6K9Yjz1l+9XnE3JpQJ5lC5v4U1D6D9Y1y5uG6xA4bYF1T+6xY7V3Z5Y5n3v4Kw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  
+
+<header>
+  <div class="header-inner">
+    <!-- ロゴ -->
+    <div class="logo"><a href="index.html">NPO法人秋田スポーツPLUS</a></div>
+
+    <!-- ハンバーガーボタン -->
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- ナビゲーション -->
+    <nav class="header-nav">
+      <ul>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="staff.html">選手スタッフ紹介</a></li>
+        <li><a href="place.html">施設紹介</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+
+    <!-- SNS -->
+    <div class="sns-links">
+      <a href="#" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#E1306C" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.5-.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/AkitaSportsPlus" target="_blank" aria-label="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#1877F2" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2c0-2 1.2-3.1 3-3.1.9 0 1.8.1 2 .1v2.2h-1.1c-1.1 0-1.4.7-1.4 1.3v1.5h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" aria-label="YouTube">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#FF0000" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M19.615 3.184A2.996 2.996 0 0 0 17.6 2H6.4a3 3 0 0 0-2.015.784A2.992 2.992 0 0 0 3 4.8C2.875 6.356 2.8 8.165 2.8 10s.075 3.644.2 5.2c.1 1.04.635 1.936 1.385 2.616A2.996 2.996 0 0 0 6.4 19h11.2a3 3 0 0 0 2.015-.784 2.992 2.992 0 0 0 1.385-1.984c.125-1.556.2-3.365.2-5.2s-.075-3.644-.2-5.2a2.992 2.992 0 0 0-1.385-1.984zM10 15.5v-7l6 3.5-6 3.5z"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" aria-label="X">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="22" height="22" viewBox="0 0 24 24">
+          <path d="M18.244 2h3.284l-7.18 8.209L22 22h-6.44l-5.06-6.601L4.4 22H1.115l7.66-8.75L2 2h6.56l4.56 6.005L18.244 2zM17.11 20.146h1.82L7.004 3.765H5.05l12.06 16.381z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay"></div>
+
+<!-- トップビュー -->
+<section class="visual">
+  <img src="images/photo/ASPトップビュー2.jpg" alt="メインビジュアル">
+</section>
+
+<!-- マッチリザルト -->
+<section class="match-section" id="match-section">
+
+  <div class="match-section-header">
+    <p class="sec-label sec-label--dark">RESULTS</p>
+    <h2>MATCH<br><span>RESULTS</span></h2>
+  </div>
+
+  <!-- タブメニュー -->
+  <div class="match-tabs">
+    <button class="match-tab active" data-category="u15">U-15</button>
+    <button class="match-tab" data-category="u14">U-14</button>
+    <button class="match-tab" data-category="u13">U-13</button>
+  </div>
+
+  <!-- U-15の試合 -->
+  <div class="match-grid" data-category="u15">
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-15</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-15</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-15</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+  </div>
+
+  <!-- U-14の試合 -->
+  <div class="match-grid" data-category="u14" style="display: none;">
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-14</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-14</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-14</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+  </div>
+
+  <!-- U-13の試合 -->
+  <div class="match-grid" data-category="u13" style="display: none;">
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-13</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-13</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+
+    <div class="match-card">
+      <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="match-logo">
+      <div class="match-date"></div>
+      <div class="match-league"></div>
+      <div class="match-teams">
+        <span class="team">ASP U-13</span>
+        <span class="score"></span>
+        <span class="team"></span>
+      </div>
+      <div class="match-place"></div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+<!-- ジュニアユース -->
+<section class="junior-youth" id="junior-youth">
+  <div class="junior-container">
+    <div class="junior-header">
+      <div>
+        <p class="sec-label">JUNIOR YOUTH</p>
+        <h2>ASP<br>U-15</h2>
+      </div>
+      <p>中学生を対象としたJFA登録のジュニアユースチーム。<br>セレクション合格者が対象です。</p>
+    </div>
+
+    <div class="junior-info">
+      <div class="info-row">
+        <span class="label">対象</span>
+        <span class="value">中学生</span>
+      </div>
+      <div class="info-row">
+        <span class="label">定員</span>
+        <span class="value">各学年20名</span>
+      </div>
+      <div class="info-row">
+        <span class="label">月会費</span>
+        <span class="value">13,500円</span>
+      </div>
+      <div class="info-row">
+        <span class="label">日時</span>
+        <span class="value">毎週 火・木・金 19:00〜21:00<br>土・日・祝：試合、遠征、トレーニング</span>
+      </div>
+      <div class="info-row">
+        <span class="label">場所</span>
+        <span class="value">秋田市内公共施設</span>
+      </div>
+
+        <!-- ✅ 新しく追加：スケジュール関連 -->
+        <div class="schedule-btn-wrap">
+          <a href="https://akitasports-plus.jp/schedule.html" class="schedule-btn">スケジュール</a>
+        </div>
+
+        <!-- ✅ 新しく追加：関連画像 -->
+        <div class="info-images">
+          <img src="images/junia/junia.jpg">
+          <img src="images/junia/junia2.jpg">
+        </div>
+      
+
+      
+    </div>
+
+    <section class="timeline-section">
+      <h2>ASP U-15セレクション制です <br>〜合格までの流れ〜</h2>
+      <div class="timeline">
+    
+        <!-- 説明会 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>説明会</h3>
+            <p>ASP U-15の活動内容や選考の流れをご説明します。</p>
+          </div>
+        </div>
+    
+        <!-- 1次セレクション通過 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>1次セレクション通過</h3>
+            <p>基礎技術・判断力・フィジカルを中心に選考します。</p>
+          </div>
+        </div>
+    
+        <!-- 2次セレクション通過 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2次セレクション通過</h3>
+            <p>ゲーム形式を中心とした実践選考です。</p>
+          </div>
+        </div>
+    
+        <!-- 合格 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>合格</h3>
+            <p>合格者のみ、ASP U-15 / ASP-ACADEMY に参加できます。</p>
+          </div>
+        </div>
+
+        
+    
+      </div>
+
+      <div class="junior-cta">
+        <a href="#selection" class="btn-selection">セレクション申し込みはこちら</a>
+      </div>
+    </section>
+
+
+    
+  </div>
+</section>
+
+<!-- ===== ジュニアユース動画セクション ===== -->
+<section class="junior-video-section">
+  <div class="video-container">
+    <video class="junior-video" autoplay muted loop playsinline>
+      <source src="images/movie/u-15.last.mp4" type="video/mp4">
+      お使いのブラウザでは動画を再生できません。
+    </video>
+  </div>
+</section>
+
+
+
+
+<!-- スクール -->
+
+<!-- スクール -->
+
+<section class="junior-section" id="junior-section">
+  <h2 class="junior-main-title">ASP U-12 & 女子スクール & ASP-ACADEMY</h2>
+  <p class="junior-description">
+    秋田の子どもたちの健全な育成と、トップレベル選手の育成を目的としたスクールです。
+  </p>
+
+  <div class="junior-list">
+
+    <!-- ① ASP U-12 (動画なし) -->
+    <div class="junior-item no-video">
+      <div class="item-img">
+        <img src="images/img/IMG_5750.JPG" alt="">
+      </div>
+
+      <div class="item-text">
+        <h3>ASP U-12 サッカースクール</h3>
+        <ul>
+          <li>対象:小学4年生～6年生の男女</li>
+          <li>月会費:6,000円</li>
+          <li>水曜コース:定員20名、みんなの体育館やばせ 17:00〜18:45</li>
+          <li>木曜コース:定員30名、みんなの体育館ASP 17:00〜18:45</li>
+          <li>※令和6年度は週2回利用可能</li>
+        </ul>
+        <div class="cta-item">
+          <a href="#contact" class="btn-cta">スクール申し込みはこちら</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ③ ASP U-12 女子 (動画なし) -->
+    <div class="junior-item no-video">
+      <div class="item-img">
+        <img src="images/girls-sports/スクリーンショット 2026-01-27 11.50.38.png" alt="">
+      </div>
+
+      <div class="item-text">
+        <h3>ASP U-12 女子スポーツスクール</h3>
+        <ul>
+          <li>対象:小学1年生〜中学1年生の女子</li>
+          <li>定員:25名</li>
+          <li>月会費:6,000円</li>
+          <li>日時:毎週土曜 9:00〜10:45</li>
+          <li>場所:みんなの体育館やばせ</li>
+        </ul>
+        <div class="cta-item">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhhKb0Cmy-OwyJU12zEOw2dFZuvIqiSDzdXZgB8TRT2gLIJQ/viewform"
+            class="btn-cta">スクール申し込みはこちら</a>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- ② ASP-ACADEMY (動画あり) -->
+    <div class="junior-item has-video">
+      <div class="item-img">
+        <img src="images/img/IMG_5758.JPG" alt="">
+      </div>
+    
+      <div class="item-text">
+        <h3>ASP-ACADEMY</h3>
+        <ul>
+          <li>対象:小学5年生(飛び級4年生含む)〜6年生</li>
+          <li>定員:30〜35名程度</li>
+          <li>月会費:6,950円</li>
+          <li>日時:毎週土・日・月 19:00〜21:00</li>
+          <li>場所:秋田市内公共施設</li>
+        </ul>
+        <div class="cta-item">
+          <a href="#contact" class="btn-cta">スクール申し込みはこちら</a>
+        </div>
+      </div>
+    
+      <div class="item-video">
+        <iframe src="images/movie/akdemy_movie.mp4" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- タイムライン（ASP-ACADEMYセレクション） -->
+<section class="timeline-section">
+  <h2>ASP-ACADEMYはセレクション制です<br>〜合格までの流れ〜</h2>
+  <div class="timeline">
+
+    <!-- 説明会 -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>説明会</h3>
+        <p>ASP-ACADEMYの活動内容や選考の流れをご説明します。</p>
+      </div>
+    </div>
+
+    <!-- 1次セレクション通過 -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>1次セレクション通過</h3>
+        <p>基礎技術・判断力・フィジカルを中心に選考します。</p>
+      </div>
+    </div>
+
+    <!-- 2次セレクション通過 -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>2次セレクション通過</h3>
+        <p>ゲーム形式を中心とした実践選考です。</p>
+      </div>
+    </div>
+
+    <!-- 合格 -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>合格</h3>
+        <p>合格者のみ、ASP U-15 / ASP-ACADEMYに参加できます。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- あいさつ -->
+
+<section class="greeting-columns-compact">
+  <div class="greeting-left">
+    <p class="sec-label sec-label--dark">ABOUT US</p>
+    <div class="greeting-header">
+      <img src="images/logo/IMG_5741.PNG" alt="クラブロゴ" class="greeting-logo">
+      <div class="greeting-anniversary-wrapper">
+        <span class="greeting-anniversary">法人化設立10周年</span>
+      </div>
+
+    </div>
+
+    <h2>サッカーを通じ<br>子供達のわくわくとすくすくを</h2>
+
+    <p>
+      競技、年齢、求めるレベルに応じたスポーツの機会の提供を行うと同時に、秋田の子どもたちのスポーツ環境の改善を行うことで秋田の競技力向上、子どもたちのすくすくとした健全育成、スポーツによる生きがいの創出に寄与する事を目的としています。
+    </p>
+    <a href="#contact" class="btn-primary">NPO法人秋田スポーツPLUSとは</a>
+  </div>
+
+
+</section>
+
+
+<!-- トピックス -->
+
+
+<section class="news-section" id="news-section">
+
+  <div class="news-container">
+    <h2 class="news-title"><span>TOPICS</span>トピックス</h2>
+
+ <div class="news-list">
+
+  <article class="news-item">
+  <div class="news-date">2026.1.17</div>
+  <div class="news-category category-info">女子スポーツスクール</div>
+
+  <h3 class="news-headline">
+    <a
+      href="https://www.facebook.com/AkitaSportsPlus/posts/pfbid02nNTpMN3Zh3vzX73EScUdoVL4J5CbQ646vJTxcV8Zb6bmnsHVQUM56bDTCgkKMA4Hl"
+      target="_blank"
+      rel="noopener"
+    >
+      月会費制女子スポーツスクール体験参加選手募集中
+    </a>
+  </h3>
+</article>
+
+
+      <article class="news-item">
+        <div class="news-date">2026.1.14</div>
+        <div class="news-category category-event">おとなの平日くらぶ</div>
+      
+        <h3 class="news-headline">
+          <a href="https://www.facebook.com/AkitaSportsPlus/posts/pfbid0b325LXSULbDcscd5U7wBC2QULA79gwNrp5F3h8soeYx7fWgFMjkU8jK1SpzKKzL6l"
+            target="_blank" rel="noopener">
+            横森・桜・広面コースがドジャース広面店へ
+          </a>
+        </h3>
+      </article>
+
+      <article class="news-item">
+        <div class="news-date">2026.1.10</div>
+        <div class="news-category category-info">フリーペーパー秋田スポーツＰＬＵＳvol.３１</div>
+      
+        <h3 class="news-headline">
+          <a href="https://www.facebook.com/AkitaSportsPlus/posts/pfbid02o1oaF7Xs3tQoZuz5XvHEJpTy6ewhTg9kbkjseMqPiVjnDxSWQgiCJJ8ZYbFXYuYl"
+            target="_blank" rel="noopener">
+          ＡＳＰニュース新刊３１号！
+          </a>
+        </h3>
+      </article>
+
+      <article class="news-item">
+        <div class="news-date">2026.1.6</div>
+        <div class="news-category category-match">秋田県U18フットサルフェスティバル</div>
+      
+        <h3 class="news-headline">
+          <a href="https://www.facebook.com/AkitaSportsPlus/posts/pfbid0aaH6kwzucinGdQ12DLXEL3ehJ4xpJ4Tq9fPkVJShtnDd2p3Xf3QrSWh3KfCLXesl"
+            target="_blank" rel="noopener">
+            アルテ杯
+          </a>
+        </h3>
+      </article>
+
+    </div>
+
+    <div class="news-more">
+      <a href="https://www.facebook.com/AkitaSportsPlus?fref=nf&ref=embed_page" class="news-more-btn">すべてのお知らせを見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- Facebook埋め込み -->
+<section class="facebook-section">
+  <div class="facebook-container">
+    <h2 class="facebook-title">FACEBOOK<span>LATEST NEWS</span></h2>
+
+    <div class="facebook-embed-wrapper">
+      <iframe
+        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAkitaSportsPlus&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+        width="500" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+        allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+
+    <div class="facebook-link">
+      <a href="https://www.facebook.com/AkitaSportsPlus" target="_blank" class="btn-facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2c0-2 1.2-3.1 3-3.1.9 0 1.8.1 2 .1v2.2h-1.1c-1.1 0-1.4.7-1.4 1.3v1.5h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z" />
+        </svg>
+        Facebookページを見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 活動実績ー -->
+
+<section class="achievements-section">
+  <h2>その他活動実績</h2>
+
+  <div class="achievements-grid">
+
+    <!-- 日本代表 -->
+    <div class="achievements-item">
+      <a href="#img1">
+        <img src="images/img/日本代表.png" alt="日本代表実績">
+      </a>
+      <p>日本代表関連の活動</p>
+    </div>
+
+    <!-- 海外実績 -->
+    <div class="achievements-item">
+      <a href="#img2">
+        <img src="images/img/海外実績.png" alt="海外での活動実績">
+      </a>
+      <p>海外での活動実績</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ▼ モーダル（画像ポップアップ） -->
+<div id="img1" class="modal">
+  <a href="#" class="modal-bg"></a>
+  <img src="images/img/日本代表.png" class="modal-img">
+</div>
+
+<div id="img2" class="modal">
+  <a href="#" class="modal-bg"></a>
+  <img src="images/img/海外実績.png" class="modal-img">
+</div>
+
+<link rel="stylesheet" href="images/logo/概要.png">
+<link rel="stylesheet" href="images/logo/学童.png">
+<link rel="stylesheet" href="images/logo/高齢者輸送支援.png">
+<link rel="stylesheet" href="images/logo/選手スタッフ.png">
+<link rel="stylesheet" href="images/logo/施設.png">
+
+
+
+
+<!-- スポンサー -->
+
+<section class="sponsor-section">
+  <div class="sponsor-category">
+    <h2>Official Top Partners</h2>
+    <div class="sponsor-logos large">
+      <img src="images/sponsor/webbanner_localpower.gif" alt="Local Power">
+      <img src="images/sponsor/campus21.png" alt="Campus21">
+    </div>
+  </div>
+
+  <div class="sponsor-category">
+    <h2>Official Partners</h2>
+    <div class="sponsor-logos medium">
+      <img src="images/sponsor/サンコーホーム様.png" alt="サンコーホーム">
+      <img src="images/sponsor/nishioka.png" alt="西岡様">
+      <img src="images/sponsor/azuma-company.png" alt="TTK">
+      <img src="images/sponsor/ttk.png" alt="TTK">
+      <img src="images/sponsor/konishiTire_logo_Color.jpg" alt="小西タイヤ">
+      <img src="images/sponsor/tohoku-risk.png" alt="東北リスクマネジメント">
+      <img src="images/sponsor/tohokudenzai.png" alt="">
+    </div>
+  </div>
+
+  <div class="sponsor-category">
+    <h2>Homepage Sponsors</h2>
+    <div class="sponsor-logos small">
+      <img src="images/sponsor/273057862_486673783019991_4705097579190994263_n.png" alt="">
+      <img src="images/sponsor/sakura.png" alt="">
+      <img src="images/sponsor/秋田三菱自動車販売株式会社様.png" alt="">
+      <img src="images/sponsor/ささき歯科クリニック様.png" alt="">
+      <img src="images/sponsor/obu.jpg" alt="">
+      <img src="images/sponsor/shingakujuku.jpg" alt="">
+      <img src="images/sponsor/messageImage_1710818852508_0.jpg" alt="">
+      <img src="images/sponsor/messageImage_1710818932095_0.jpg" alt="">
+      <img src="images/sponsor/sp.jpg" alt="">
+      <img src="images/sponsor/unnamed.jpg" alt="">
+      <img src="images/sponsor/八森運輸バナー.png" alt="">
+      <img src="images/sponsor/kasizagi-d.png" alt="">
+      <img src="images/sponsor/s-e.png" alt="">
+      <img src="images/sponsor/inex.png" alt="">
+      <img src="images/sponsor/prestige international.png" alt="">
+      <img src="images/sponsor/activate.jpg" alt="">
+      <img src="images/sponsor/procare-akita.png" alt="">
+      <img src="images/sponsor/瀬谷様.png" alt="">
+
+
+    </div>
+  </div>
+</section>
+
+<div class="sponsor-banner">
+  <img src="images/バナー/sponsor-banner.png" alt="秋田の企業を応援しています - ASP">
+</div>
+
+
+<footer class="app-footer">
+  <div class="container">
+    <!-- ロゴ -->
+    <div class="app-footer__logo">
+      <a href="/">
+        <img src="images/logo/IMG_5741.PNG" alt="ASPロゴ" class="app-footer__emblem">
+        <h2 class="app-footer__logotype">AKITA SPORTS PLUS</h2>
+      </a>
+    </div>
+
+    <!-- メインメニュー -->
+    <div class="app-footer__menu">
+      <div class="footer-column">
+        <h4>クラブ情報</h4>
+        <ul>
+          <li><a href="about.html">クラブ概要</a></li>
+          <li><a href="staff.html">スタッフ一覧</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>チーム・スクール</h4>
+        <ul>
+          <li><a href="#junior-youth">ジュニアユース</a></li>
+          <li><a href="#junior-section">U-12 サッカースクール</a></li>
+          <li><a href="#junior-section">ASPアカデミー</a></li>
+          <li><a href="#junior-section">ゴルフスクール</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>お知らせ</h4>
+        <ul>
+          <li><a href="#news-section">最新ニュース</a></li>
+          <li><a href="#match-section">試合スケジュール</a></li>
+          <li><a href="https://ameblo.jp/u13kkbrkospit/">加藤公平ブログ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="#">お問い合わせフォーム</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SNS / サブメニューなど追加可 -->
+
+  </div>
+
+  <div class="footer-banners">
+    <div class="footer-banners-inner">
+      <a href="https://www.akitagakudou.com/" target="_blank" rel="noopener noreferrer">
+        <img src="images/jigyou/学童.png" alt="学童" class="footer-banner-img">
+      </a>
+  
+      <a href="https://example.com/koureisha" target="_blank" rel="noopener noreferrer">
+        <img src="images/jigyou/高齢者移送支援.png" alt="高齢者移送支援" class="footer-banner-img">
+      </a>
+    </div>
+  </div>
+
+
+  <div class="footer-bottom">
+    <p>© 2025 NPO法人秋田スポーツPLUS All Rights Reserved.</p>
+  </div>
+</footer>
+  <script src="script.js"></script>
+  <script src="js/wordpress-news.js"></script>
+
+</body>
+</html>

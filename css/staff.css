@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+  padding-top: 80px;
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, sans-serif;
+  color: #333;
+  /* ✅ 芝生をイメージした背景 */
+  background: linear-gradient(135deg, #0a4d2e 0%, #1a6d45 25%, #2d8659 50%, #1a6d45 75%, #0a4d2e 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ✅ ストライプ模様を追加 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 80px,
+      transparent 80px,
+      transparent 160px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.member-card {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(46, 204, 113, 0.3);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===========================
+   スタッフ紹介ページ（staff.css）
+   =========================== */
+
+
+
+
+/* ページタイトル */
+.page-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin: 40px 0 20px;
+  font-weight: 700;
+  color: #222;
+}
+
+.member-card {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  gap: 25px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  /* カードクリック可能 */
+  transition: transform .3s, box-shadow .3s;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+
+.member-photo {
+  width: 160px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  background-color: #f0f0f0;
+}
+
+.member-content {
+  flex: 1;
+}
+
+.member-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.member-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.member-career {
+  display: none;
+  margin-top: 15px;
+}
+
+.member-card.active .member-career {
+  display: block;
+}
+
+.member-career h4 {
+  font-size: 1.1rem;
+  margin: 15px 0 8px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-left: 4px solid #0066cc;
+  padding-left: 10px;
+}
+
+.member-career ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.member-career li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* スマホ対応 */
+@media (max-width: 780px) {
+  .member-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .member-photo {
+    margin: 0 auto 20px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .member-message {
+    text-align: left;
+  }
+
+  .member-career ul {
+    text-align: left;
+  }
+}
+
+/* セクション全体を中央寄せ */
+.first-grade {
+  text-align: center;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.first-grade-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* 画像を大きめに表示 */
+.grade-image-wrap img {
+  max-width: 1000px;
+  /* ← 800px → 1000px に拡大 */
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}

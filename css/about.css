@@ -1,0 +1,220 @@
+/* ==== 全体設定（ボールアニメーション追加） ==== */
+body {
+  margin: 0;
+  padding-top: 80px;
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, sans-serif;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ✅ ボールを動かす背景アニメーション */
+body::before,
+body::after {
+  content: "⚽";
+  position: fixed;
+  font-size: 60px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ボール1：左上から右下へ */
+body::before {
+  animation: passBall1 8s ease-in-out infinite;
+}
+
+/* ボール2：右上から左下へ */
+body::after {
+  animation: passBall2 10s ease-in-out infinite 2s;
+}
+
+/* ✅ アニメーション定義 */
+@keyframes passBall1 {
+  0% {
+    top: 10%;
+    left: 5%;
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    top: 30%;
+    left: 40%;
+    transform: scale(1.2) rotate(90deg);
+  }
+
+  50% {
+    top: 50%;
+    left: 75%;
+    transform: scale(1) rotate(180deg);
+  }
+
+  75% {
+    top: 70%;
+    left: 40%;
+    transform: scale(1.2) rotate(270deg);
+  }
+
+  100% {
+    top: 10%;
+    left: 5%;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes passBall2 {
+  0% {
+    top: 15%;
+    right: 5%;
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    top: 35%;
+    right: 40%;
+    transform: scale(1.3) rotate(-90deg);
+  }
+
+  50% {
+    top: 55%;
+    right: 75%;
+    transform: scale(1) rotate(-180deg);
+  }
+
+  75% {
+    top: 75%;
+    right: 40%;
+    transform: scale(1.3) rotate(-270deg);
+  }
+
+  100% {
+    top: 15%;
+    right: 5%;
+    transform: scale(1) rotate(-360deg);
+  }
+}
+
+/* ✅ さらにボールを追加したい場合 */
+.company-wrapper::before,
+.company-wrapper::after {
+  content: "⚽";
+  position: absolute;
+  font-size: 50px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.company-wrapper::before {
+  top: 20%;
+  left: 10%;
+  animation: floatBall 6s ease-in-out infinite;
+}
+
+.company-wrapper::after {
+  bottom: 20%;
+  right: 10%;
+  animation: floatBall 7s ease-in-out infinite 1s;
+}
+
+@keyframes floatBall {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
+}
+
+/* 既存のスタイルはそのまま */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ヘッダーなどのコードは省略（そのまま残してください） */
+
+.about-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 40px 0 30px;
+  color: #222;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+.company-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 60px;
+  position: relative;
+  /* ← ボール配置のため追加 */
+}
+
+.company-info {
+  background: #ffffff;
+  padding: 40px 50px;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+  position: relative;
+  z-index: 1;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+}
+
+.info-row .label {
+  font-weight: 700;
+  color: #444;
+  width: 30%;
+}
+
+.info-row .value {
+  width: 68%;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+
+  /* ボールを小さく */
+  body::before,
+  body::after {
+    font-size: 40px;
+  }
+
+  .company-wrapper::before,
+  .company-wrapper::after {
+    font-size: 35px;
+  }
+
+  .company-info {
+    padding: 30px 25px;
+  }
+
+  .info-row {
+    flex-direction: column;
+  }
+
+  .info-row .label {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .info-row .value {
+    width: 100%;
+  }
+}
