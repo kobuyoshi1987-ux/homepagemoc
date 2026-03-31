@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秋田スポーツPLUS｜ジュニアユース スケジュール</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D2137; --navy-mid: #1A3A5C; --accent: #E8A020;
+  --bg: #F2F4F7; --line: #E0E4EA; --text: #1A1A2E; --muted: #7A8499;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* パスワード画面 */
+#pw-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--navy); }
+.pw-box { background: white; border-radius: 16px; padding: 40px 32px; width: 100%; max-width: 360px; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.pw-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 6px; }
+.pw-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 28px; }
+.pw-box input { width: 100%; border: 2px solid var(--line); border-radius: 8px; padding: 12px 16px; font-size: 1rem; text-align: center; letter-spacing: 0.2em; outline: none; transition: border 0.2s; }
+.pw-box input:focus { border-color: var(--navy-mid); }
+.pw-box button { width: 100%; margin-top: 12px; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+.pw-box button:hover { background: var(--navy-mid); }
+.pw-error { color: #C0392B; font-size: 0.8rem; margin-top: 10px; display: none; }
+
+/* メイン画面 */
+#main-screen { display: none; }
+header { background: var(--navy); padding: 18px 24px; position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; border-radius: 50%; background: rgba(232,160,32,0.10); pointer-events: none; }
+.header-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+
+/* ★ 変更箇所: divからaタグに変更 */
+.header-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  line-height: 1.3;
+  text-decoration: none;        /* 下線なし */
+  transition: opacity 0.15s;   /* ホバー時にフェード */
+}
+.header-logo:hover { opacity: 0.75; }
+.header-logo span { display: block; font-family: 'Noto Sans JP', sans-serif; font-size: 0.68rem; font-weight: 400; color: rgba(255,255,255,0.5); }
+
+.header-updated { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
+.container { max-width: 960px; margin: 0 auto; padding: 20px 16px 40px; }
+
+/* ローディング */
+#loading { text-align: center; padding: 60px 0; color: var(--muted); }
+.spinner { width: 36px; height: 36px; border: 3px solid var(--line); border-top-color: var(--navy-mid); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 活動率 */
+.section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
+.rates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.rate-card { background: white; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
+.rate-grade { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+.rate-num { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 600; color: var(--navy); line-height: 1; }
+.rate-pct { font-size: 1rem; }
+.rate-sub { font-size: 0.68rem; color: var(--muted); margin-top: 4px; }
+
+/* ナビ */
+.cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.cal-nav h2 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); }
+.nav-btn { background: white; border: 1px solid var(--line); border-radius: 6px; padding: 7px 16px; font-size: 0.82rem; font-weight: 500; cursor: pointer; color: var(--navy-mid); transition: background 0.15s; }
+.nav-btn:hover { background: #EEF3F8; }
+
+/* 凡例 */
+.legend { display: flex; gap: 14px; margin-bottom: 10px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 500; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* カレンダー */
+.calendar { background: var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.cal-dow { background: var(--navy-mid); color: rgba(255,255,255,0.85); text-align: center; padding: 8px 2px; font-size: 0.72rem; font-weight: 700; }
+.cal-dow.sun { background: #8B2020; } .cal-dow.sat { background: #1A5C8B; }
+.cal-cell { background: white; min-height: 90px; padding: 4px 3px; min-width: 0; overflow: hidden; }
+.cal-cell.empty { background: #EAEDF0; }
+.cal-cell.sun { background: #FFF8F8; } .cal-cell.sat { background: #F7FAFF; }
+.cal-cell.today { outline: 2px solid var(--accent); outline-offset: -2px; background: #FFFBEA; }
+.cal-date { font-size: 0.78rem; font-weight: 700; text-align: right; color: var(--muted); margin-bottom: 3px; }
+.cal-cell.sun .cal-date { color: #C0392B; } .cal-cell.sat .cal-date { color: #2471A3; } .cal-cell.today .cal-date { color: var(--accent); }
+
+/* イベント */
+.event { border-radius: 4px; margin-bottom: 3px; overflow: hidden; min-width: 0; }
+.event.off { }
+.ev-header { padding: 2px 4px; line-height: 1.45; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.ev-header:active { filter: brightness(0.92); }
+.ev-badge { display: inline-block; color: white; border-radius: 2px; padding: 0 3px; font-size: 0.58rem; font-weight: 700; margin-right: 2px; vertical-align: middle; font-family: 'Oswald', sans-serif; }
+.ev-title { font-size: 0.67rem; font-weight: 700; vertical-align: middle; word-break: break-all; }
+.ev-chevron { font-size: 0.58rem; color: var(--muted); margin-left: 1px; display: inline-block; transition: transform 0.18s; vertical-align: middle; }
+.ev-chevron.open { transform: rotate(180deg); }
+.ev-time { display: block; font-size: 0.6rem; color: var(--muted); margin-top: 1px; }
+.ev-loc-short { display: block; font-size: 0.58rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ev-detail { display: none; padding: 5px 6px 7px; border-top: 1px solid rgba(0,0,0,0.07); background: rgba(255,255,255,0.65); font-size: 0.72rem; word-break: break-all; }
+.ev-detail.open { display: block; }
+.ev-desc { color: var(--text); line-height: 1.6; margin-top: 4px; white-space: pre-wrap; }
+.ev-off-note { color: var(--muted); font-size: 0.68rem; margin-top: 4px; }
+.map-link { display: inline-flex; align-items: center; gap: 3px; background: #1A73E8; color: white; border-radius: 5px; padding: 3px 8px; font-size: 0.7rem; font-weight: 700; text-decoration: none; }
+.map-link:hover { background: #1558C0; }
+
+/* iCalサブスクリプションバー */
+.ical-bar {
+  background: white;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+.ical-bar-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.ical-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ical-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.15s;
+}
+.ical-btn:hover { opacity: 0.85; }
+
+footer { text-align: center; font-size: 0.68rem; color: var(--muted); margin-top: 32px; padding-bottom: 24px; }
+@media (max-width: 600px) {
+  .rates { gap: 8px; } .rate-num { font-size: 1.5rem; } .rate-sub { display: none; }
+}
+
+/* スマホ：カレンダーは横スクロール */
+@media (max-width: 700px) {
+  .cal-scroll-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .calendar {
+    min-width: 560px;
+  }
+  .cal-cell { min-height: 70px; }
+  .ev-time { display: none; }
+  .cal-scroll-hint {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-align: right;
+    margin-bottom: 4px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- パスワード画面（無効） -->
+<div id="pw-screen" style="display:none">
+  <div class="pw-box">
+    <div class="pw-logo">秋田スポーツPLUS</div>
+    <div class="pw-sub">ジュニアユース 保護者向けページ</div>
+    <input type="password" id="pw-input" placeholder="パスワードを入力"
+      onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">ログイン</button>
+    <div class="pw-error" id="pw-error">パスワードが違います</div>
+  </div>
+</div>
+
+<!-- メイン画面 -->
+<div id="main-screen" style="display:block">
+  <header>
+    <div class="header-inner">
+      <!-- ★ 変更: divをaタグに変更してリンクを追加 -->
+      <a class="header-logo" href="https://akitasports-plus.jp/" target="_blank" rel="noopener">
+        <span>NPO法人</span>
+        秋田スポーツPLUS
+        <span style="margin-top:2px">ジュニアユース スケジュール</span>
+      </a>
+      <div class="header-updated" id="updated"></div>
+    </div>
+  </header>
+  <div class="container">
+    <div id="loading"><div class="spinner"></div>読み込み中...</div>
+    <div id="cal-content" style="display:none"></div>
+  </div>
+  <footer>NPO法人 秋田スポーツPLUS</footer>
+</div>
+
+<script>
+// ============================================================
+// ★ 設定（ここだけ変更してください）
+// ============================================================
+var PASSWORD = 'akita2026';
+var GAS_URL  = 'https://script.google.com/macros/s/AKfycbw24qse_SpUrmucVyDRwd9VdE_r6hW4NqwNx0xxk5bZp9ipLv_1jaNBPe-3zCbv466JnA/exec';
+
+var CAL_INFO = [
+  { label: 'U15', color: '#1D6FA4', bg: '#E8F4FD',
+    ical: 'https://calendar.google.com/calendar/ical/00f2c76be64b8468a347da205d5c1ac01152ec41f2d436b36e09f3ccfca406ac%40group.calendar.google.com/public/basic.ics' },
+  { label: 'U14', color: '#7B3FA0', bg: '#F3EBF9',
+    ical: 'https://calendar.google.com/calendar/ical/43f66c98445f5a7d6d89407ba713a4933aae79057fef4beb943b84b1afc90832%40group.calendar.google.com/public/basic.ics' },
+  { label: 'U13', color: '#1A8C4E', bg: '#E6F7EE',
+    ical: 'https://calendar.google.com/calendar/ical/f7c20fe49f6a9b23d1bd4fe2052fe62b74edca5263886a4059e915e8a699d239%40group.calendar.google.com/public/basic.ics' },
+];
+
+window.addEventListener('load', function() {
+  showMain();
+});
+
+function checkPw() {
+  if (document.getElementById('pw-input').value === PASSWORD) {
+    sessionStorage.setItem('auth', '1');
+    showMain();
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+  }
+}
+
+function showMain() {
+  document.getElementById('pw-screen').style.display = 'none';
+  document.getElementById('main-screen').style.display = 'block';
+  var params = new URLSearchParams(location.search);
+  var now    = new Date();
+  var y = parseInt(params.get('year')  || now.getFullYear());
+  var m = parseInt(params.get('month') || (now.getMonth() + 1));
+  loadCalendar(y, m);
+}
+
+function loadCalendar(year, month) {
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('cal-content').style.display = 'none';
+
+  fetch(GAS_URL + '?year=' + year + '&month=' + month)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      renderCalendar(data);
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('cal-content').style.display = 'block';
+      document.getElementById('updated').textContent = '更新: ' + nowStr();
+      history.replaceState(null, '', '?year=' + year + '&month=' + month);
+    })
+    .catch(function(err) {
+      document.getElementById('loading').innerHTML =
+        '<p style="color:#C0392B">データの取得に失敗しました。再読み込みしてください。</p>';
+    });
+}
+
+function goMonth(y, m) { loadCalendar(y, m); }
+
+function renderCalendar(data) {
+  var year   = data.year;
+  var month  = data.month;
+  var days   = data.days;
+  var events = data.events;
+  var rates  = data.rates;
+
+  var py = month === 1  ? year - 1 : year;
+  var pm = month === 1  ? 12 : month - 1;
+  var ny = month === 12 ? year + 1 : year;
+  var nm = month === 12 ? 1  : month + 1;
+
+  var byDay = {};
+  for (var i = 1; i <= days; i++) byDay[i] = [];
+  events.forEach(function(ev) { if (byDay[ev.day]) byDay[ev.day].push(ev); });
+
+  var rateHtml = CAL_INFO.map(function(c) {
+    var r = rates[c.label] || { rate: '0.0', days: 0, total: days };
+    return '<div class="rate-card" style="border-top:4px solid ' + c.color + '">'
+      + '<div class="rate-grade" style="color:' + c.color + '">' + c.label + '</div>'
+      + '<div class="rate-num">' + r.rate + '<span class="rate-pct">%</span></div>'
+      + '<div class="rate-sub">' + r.days + '日 ／ ' + r.total + '日</div>'
+      + '</div>';
+  }).join('');
+
+  var dowHtml = ['日','月','火','水','木','金','土'].map(function(d, i) {
+    return '<div class="cal-dow' + (i===0?' sun':i===6?' sat':'') + '">' + d + '</div>';
+  }).join('');
+
+  var first  = new Date(year, month - 1, 1).getDay();
+  var today  = new Date();
+  var isCur  = today.getFullYear() === year && today.getMonth() + 1 === month;
+  var cells  = '';
+
+  for (var i = 0; i < first; i++) cells += '<div class="cal-cell empty"></div>';
+
+  for (var d = 1; d <= days; d++) {
+    var dow     = new Date(year, month - 1, d).getDay();
+    var isToday = isCur && today.getDate() === d;
+    var cls     = 'cal-cell'
+      + (dow === 0 ? ' sun' : dow === 6 ? ' sat' : '')
+      + (isToday ? ' today' : '');
+
+    var evHtml = byDay[d].map(function(ev, idx) {
+      var isOff     = /OFF/i.test(ev.title);
+      var uid       = 'd' + d + 'i' + idx;
+      var hasDetail = ev.location || ev.description || isOff;
+
+      var header = '<div class="ev-header"'
+        + (hasDetail ? ' onclick="toggleEv(\'' + uid + '\')"' : '') + '>'
+        + '<span class="ev-badge" style="background:' + ev.color + '">' + ev.label + '</span>'
+        + '<span class="ev-title">' + esc(ev.title) + '</span>'
+        + (hasDetail ? '<span class="ev-chevron" id="chv-' + uid + '">▾</span>' : '')
+        + '<span class="ev-time">' + ev.time + '</span>'
+        + (ev.location ? '<span class="ev-loc-short">📍' + esc(ev.location) + '</span>' : '')
+        + '</div>';
+
+      var detail = '';
+      if (hasDetail) {
+        var mapBtn  = ev.location
+          ? '<a class="map-link" href="https://maps.google.com/?q='
+            + encodeURIComponent(ev.location) + '" target="_blank" rel="noopener">🗺 Googleマップで見る</a>'
+          : '';
+        var desc    = ev.description
+          ? '<div class="ev-desc">' + esc(ev.description).replace(/\n/g, '<br>') + '</div>'
+          : '';
+        var offNote = isOff ? '<div class="ev-off-note">※ OFF（活動率カウント対象外）</div>' : '';
+        detail = '<div class="ev-detail" id="detail-' + uid + '">' + mapBtn + desc + offNote + '</div>';
+      }
+
+      return '<div class="event' + (isOff ? ' off' : '') + '" style="background:' + ev.bg
+        + ';border-left:3px solid ' + ev.color + '">' + header + detail + '</div>';
+    }).join('');
+
+    cells += '<div class="' + cls + '"><div class="cal-date">' + d + '</div>' + evHtml + '</div>';
+  }
+
+  var legend = CAL_INFO.map(function(c) {
+    return '<span class="legend-item"><span class="legend-dot" style="background:' + c.color + '"></span>' + c.label + '</span>';
+  }).join('') + '<span class="legend-item"><span class="legend-dot" style="background:#CCC"></span>OFF</span>';
+
+  var icalHtml = '<div class="ical-bar">'
+    + '<div class="ical-bar-title">📅 カレンダーに取り込む</div>'
+    + '<div class="ical-btns">'
+    + CAL_INFO.map(function(c) {
+        return '<a class="ical-btn" style="background:' + c.color + '" href="' + c.ical + '" target="_blank" rel="noopener">'
+          + '＋ ' + c.label + ' をカレンダーに追加</a>';
+      }).join('')
+    + '</div></div>';
+
+  document.getElementById('cal-content').innerHTML =
+      icalHtml
+    + '<div class="section-label">📊 ' + year + '年' + month + '月 活動率</div>'
+    + '<div class="rates">' + rateHtml + '</div>'
+    + '<div class="cal-nav">'
+    + '<button class="nav-btn" onclick="goMonth(' + py + ',' + pm + ')">◀ ' + pm + '月</button>'
+    + '<h2>' + year + '年 ' + month + '月</h2>'
+    + '<button class="nav-btn" onclick="goMonth(' + ny + ',' + nm + ')">' + nm + '月 ▶</button>'
+    + '</div>'
+    + '<div class="legend">' + legend + '</div>'
+    + '<div class="cal-scroll-hint">← 横にスクロール →</div>'
+    + '<div class="cal-scroll-wrap"><div class="calendar">' + dowHtml + cells + '</div></div>';
+}
+
+function toggleEv(uid) {
+  var detail = document.getElementById('detail-' + uid);
+  var chv    = document.getElementById('chv-' + uid);
+  if (!detail) return;
+  var open = detail.classList.contains('open');
+  detail.classList.toggle('open', !open);
+  if (chv) chv.classList.toggle('open', !open);
+}
+
+function esc(s) {
+  var d = document.createElement('div');
+  d.textContent = String(s);
+  return d.innerHTML;
+}
+
+function nowStr() {
+  var d = new Date();
+  return d.getFullYear() + '/'
+    + ('0' + (d.getMonth() + 1)).slice(-2) + '/'
+    + ('0' + d.getDate()).slice(-2) + ' '
+    + ('0' + d.getHours()).slice(-2) + ':'
+    + ('0' + d.getMinutes()).slice(-2);
+}
+
+var prefetchCache = {};
+
+function prefetch(year, month) {
+  var key = year + '-' + month;
+  if (prefetchCache[key]) return;
+  prefetchCache[key] = 'loading';
+  fetch(GAS_URL + '?year=' + year + '&month=' + month)
+    .then(function(r) { return r.json(); })
+    .then(function(data) { prefetchCache[key] = data; })
+    .catch(function() { delete prefetchCache[key]; });
+}
+
+var _origLoadCalendar = loadCalendar;
+loadCalendar = function(year, month) {
+  var key = year + '-' + month;
+  if (prefetchCache[key] && prefetchCache[key] !== 'loading') {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('cal-content').style.display = 'block';
+    renderCalendar(prefetchCache[key]);
+    document.getElementById('updated').textContent = '更新: ' + nowStr();
+    history.replaceState(null, '', '?year=' + year + '&month=' + month);
+    var py = month === 1  ? year - 1 : year; var pm = month === 1  ? 12 : month - 1;
+    var ny = month === 12 ? year + 1 : year; var nm = month === 12 ? 1  : month + 1;
+    prefetch(py, pm); prefetch(ny, nm);
+  } else {
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('cal-content').style.display = 'none';
+    fetch(GAS_URL + '?year=' + year + '&month=' + month)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        prefetchCache[key] = data;
+        renderCalendar(data);
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('cal-content').style.display = 'block';
+        document.getElementById('updated').textContent = '更新: ' + nowStr();
+        history.replaceState(null, '', '?year=' + year + '&month=' + month);
+        var py = month === 1  ? year - 1 : year; var pm = month === 1  ? 12 : month - 1;
+        var ny = month === 12 ? year + 1 : year; var nm = month === 12 ? 1  : month + 1;
+        prefetch(py, pm); prefetch(ny, nm);
+      })
+      .catch(function() {
+        document.getElementById('loading').innerHTML =
+          '<p style="color:#C0392B">データの取得に失敗しました。再読み込みしてください。</p>';
+      });
+  }
+};
+</script>
+</body>
+</html>

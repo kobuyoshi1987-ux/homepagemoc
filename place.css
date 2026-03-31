@@ -1,0 +1,317 @@
+/* ==== 全体設定（パターン7: プロクラブ風） ==== */
+body {
+  margin: 0;
+  padding-top: 80px;
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, sans-serif;
+  /* ✅ 文字色を白に変更 */
+  color: #ffffff;
+  /* ✅ 高級感のあるダークグリーン背景 */
+  background: linear-gradient(135deg, #0a2e1f 0%, #0d3d28 25%, #0a2e1f 50%, #0d3d28 75%, #0a2e1f 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ✅ 幾何学パターン（高級感） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(30deg, rgba(46, 204, 113, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(46, 204, 113, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(46, 204, 113, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(46, 204, 113, 0.03) 87.5%),
+    linear-gradient(30deg, rgba(46, 204, 113, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(46, 204, 113, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(46, 204, 113, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(46, 204, 113, 0.03) 87.5%);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ✅ ゴールドのライン（高級感演出） */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 999;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  margin-top: 20px;
+}
+
+.facilities {
+  position: relative;
+  max-width: 900px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+.facilities-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* ✅ タイトル下にゴールドライン */
+.facilities-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 15px auto 0;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.facilities-philosophy {
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 60px;
+  font-size: 1rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.facility-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* 基本カード（横・交互） */
+.facility-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.facility-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.facility-img img,
+.vertical-images img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(46, 204, 113, 0.3);
+}
+
+.facility-text-block {
+  flex: 1;
+}
+
+.facility-name {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #2ECC71;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.facility-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #d0d0d0;
+}
+
+/* --- ASPスタジアムだけ縦構成（文章上 / 画像下） --- */
+.facility-card.vertical {
+  display: block;
+  text-align: center;
+}
+
+.facility-card.vertical .facility-name {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #2ECC71;
+}
+
+.facility-card.vertical .facility-text {
+  color: #d0d0d0;
+}
+
+/* 画像3枚を横並びにする */
+.vertical-images {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+
+.vertical-images img {
+  width: calc(33.333% - 14px);
+  max-width: 320px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(46, 204, 113, 0.3);
+}
+
+/* --- 全体コンテナ --- */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* --- セクションごとのカードデザイン --- */
+.section-card {
+  background: rgba(20, 40, 30, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 35px;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  border-left: 4px solid #d4af37;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✅ ホバー時に左のゴールドラインが伸びる */
+.section-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(180deg, #d4af37, #ffd700);
+  transition: height 0.4s ease;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+.section-card:hover::before {
+  height: 100%;
+}
+
+.section-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(46, 204, 113, 0.3);
+  border-left-color: #ffd700;
+}
+
+/* --- タイトル --- */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #2ECC71;
+}
+
+/* --- 通常の2カラム画像 --- */
+.image-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.image-row img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* --- ASPスタジアムだけ 3カラム --- */
+.stadium-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.stadium-row img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* --- テキスト --- */
+.section-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 14px;
+  color: #d0d0d0;
+}
+
+/* マップコンテナ */
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(46, 204, 113, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .facilities-title {
+    font-size: 2rem;
+  }
+
+  .section-card {
+    padding: 25px;
+  }
+
+  /* ASPスタジアム以外は縦並び */
+  .facility-card:not(.vertical) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  /* ① 文章 */
+  .facility-card:not(.vertical) .facility-text-block {
+    order: 1;
+  }
+
+  /* ② 写真 */
+  .facility-card:not(.vertical) .facility-img {
+    order: 2;
+  }
+
+  .facility-card:not(.vertical) .facility-img img {
+    max-width: 100%;
+  }
+
+  /* ③ 地図 */
+  .facility-card:not(.vertical) .map-container {
+    order: 3;
+  }
+
+  /* ASPスタジアム画像は縦 */
+  .vertical-images {
+    flex-direction: column;
+  }
+
+  .vertical-images img {
+    width: 100%;
+    height: 200px;
+  }
+}
